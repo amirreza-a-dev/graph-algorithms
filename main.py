@@ -6,14 +6,15 @@ def main():
     if not info.GRAPH.exists():
         ui.clear()
         info.initialize()
+        ui.clear()
     else:
         choice = ui.ask_graph_reset()
         if choice=='y':
             ui.clear()
             info.initialize()
             ui.clear()
-        vertices, edges = info.information()
-        while True:
+    vertices, edges = info.information()
+    while True:
             algorithm = ui.get_algorithms()
             if algorithm=='1':
             

@@ -6,6 +6,12 @@ A simple terminal-based app for implementing and using graph algorithms.
 
 This is a simple implementation of graph traversal algorithms. It helps users find the shortest path between two vertices, as well as find all vertices connected to a given vertex.
 
+## Features
+
+* [x] Breadth First Search
+* [x] Depth First Search
+* [x] Support for undirected and unweighted graphs
+
 ## Technologies
 
 * Python

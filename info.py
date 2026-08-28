@@ -18,6 +18,8 @@ def initialize():
         print("Enter 'end' to stop.")
         while True:
             edge = input("Enter the edge (e.g. 0 1): ")
+            if edge=="":
+                continue
             if edge=="end":
                 break
             f.write(edge+'\n')

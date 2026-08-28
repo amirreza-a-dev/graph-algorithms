@@ -3,17 +3,17 @@ def visit(vertex, marked):
 
 def neighborhood(vertex, edges, marked, family):
     family.append([vertex])
-    neighbor=[]
+    neighbors=[]
     for i in edges:
         if i[0]==vertex:
             if not marked[i[1]]:
-                neighbor.append(i[1])
+                neighbors.append(i[1])
                 family[-1].append(i[1])
         if i[1]==vertex:
             if not marked[i[0]]:
-                neighbor.append(i[0])
+                neighbors.append(i[0])
                 family[-1].append(i[0])
-    return neighbor
+    return neighbors
 
 def bfs(vertices, edges, start, target):
     queue=[]

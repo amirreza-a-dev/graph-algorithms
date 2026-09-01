@@ -20,7 +20,8 @@ def dfs(vertices, edges, root):
         result.append(vertex)
         for i in neighborhood(vertex, edges):
             if i==vertex:
-                result.append(i)
+                if vertex not in result:
+                    result.append(i)
             if not marked[i]:
                 explore(i)
     explore(root)

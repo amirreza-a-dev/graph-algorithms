@@ -3,9 +3,9 @@
 #include<stack>
 using namespace std;
 
-int neighborhood(int vertex, vector<vector<int>> edges, vector<bool> marked)
+int neighborhood(int vertex, const vector<vector<int>>& edges, const vector<bool>& marked)
 {
-    for (vector i : edges)
+    for (const vector<int>& i : edges)
     {
         if (i[0]==vertex)
         {
@@ -25,7 +25,7 @@ int neighborhood(int vertex, vector<vector<int>> edges, vector<bool> marked)
     return -1;
 }
 
-vector<int> dfs(vector<int> vertices, vector<vector<int>> edges, int root)
+vector<int> dfs(const vector<int>& vertices, const vector<vector<int>>& edges, int root)
 {
     stack<int> s;
     vector<bool> marked(vertices.size(), false);

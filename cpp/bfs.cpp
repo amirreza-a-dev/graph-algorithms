@@ -4,10 +4,11 @@
 #include<algorithm>
 
 using namespace std;
-vector<int> neighborhood(int vertex, vector<vector<int>> edges, vector<bool> marked)
+
+vector<int> neighborhood(int vertex, const vector<vector<int>>& edges, const vector<bool>& marked)
 {
     vector<int> neighbors;
-    for (vector i : edges)
+    for (const vector<int>& i : edges)
     {
         if (i[0]==vertex)
         {
@@ -28,7 +29,7 @@ vector<int> neighborhood(int vertex, vector<vector<int>> edges, vector<bool> mar
 }
 
 
-vector<int> bfs(vector<int> vertices, vector<vector<int>> edges, int start, int target)
+vector<int> bfs(const vector<int>& vertices, const vector<vector<int>>& edges, int start, int target)
 {
     queue<int> q;
     vector<int> parent(vertices.size(), -1);

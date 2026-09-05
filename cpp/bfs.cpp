@@ -9,20 +9,10 @@ vector<vector<int>> get_adj(const vector<int>& vertices, const vector<vector<int
 {
     int vertices_size=static_cast<int>(vertices.size());
     vector<vector<int>> adjacents(static_cast<size_t>(vertices_size));
-    int i;
-    for(i=0;i<vertices_size;i++)
+    for (const vector<int>& i: edges)
     {
-        for(const vector<int>& j:edges)
-        {
-            if (j[0]==i)
-            {        
-                adjacents[static_cast<size_t>(i)].push_back(j[1]);    
-            }
-            if (j[1]==i)
-            {
-                adjacents[static_cast<size_t>(i)].push_back(j[0]);
-            }
-        }
+        adjacents[static_cast<size_t>(i[0])].push_back(i[1]);
+        adjacents[static_cast<size_t>(i[1])].push_back(i[0]);
     }
     return adjacents;
 }

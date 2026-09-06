@@ -5,20 +5,20 @@
 
 using namespace std;
 
-vector<vector<int>> get_adj(const vector<int>& vertices, const vector<vector<int>>& edges)
+vector<vector<int>> get_adj(const vector<int>& vertices, const vector<pair<int, int>>& edges)
 {
     int vertices_size=static_cast<int>(vertices.size());
     vector<vector<int>> adjacents(static_cast<size_t>(vertices_size));
-    for (const vector<int>& i: edges)
+    for (const pair<int, int>& i: edges)
     {
-        adjacents[static_cast<size_t>(i[0])].push_back(i[1]);
-        adjacents[static_cast<size_t>(i[1])].push_back(i[0]);
+        adjacents[static_cast<size_t>(i.first)].push_back(i.second);
+        adjacents[static_cast<size_t>(i.second)].push_back(i.first);
     }
     return adjacents;
 }
 
 
-vector<int> bfs(const vector<int>& vertices, const vector<vector<int>>& edges, int start, int target)
+vector<int> bfs(const vector<int>& vertices, const vector<pair<int, int>>& edges, int start, int target)
 {
     if (start==target)
     {

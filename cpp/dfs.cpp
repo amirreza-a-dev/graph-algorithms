@@ -1,28 +1,19 @@
 #include<iostream>
 #include<vector>
 #include<stack>
+
 using namespace std;
 
-int neighborhood(int vertex, const vector<vector<int>>& edges, const vector<bool>& marked)
+vector<vector<int>> get_adj(const vector<int>& vertices, const vector<vector<int>>& edges)
 {
-    for (const vector<int>& i : edges)
+    int vertices_size=static_cast<int>(vertices.size());
+    vector<vector<int>> adjacents(static_cast<size_t>(vertices_size));
+    for (const vector<int>& i: edges)
     {
-        if (i[0]==vertex)
-        {
-            if (!(marked[static_cast<size_t>(i[1])]))
-            {
-                return i[1];
-            }
-        }
-        if (i[1]==vertex)
-        {
-            if (!(marked[static_cast<size_t>(i[0])]))
-            {
-                return i[0];
-            }
-        }
+        adjacents[static_cast<size_t>(i[0])].push_back(i[1]);
+        adjacents[static_cast<size_t>(i[1])].push_back(i[0]);
     }
-    return -1;
+    return adjacents;
 }
 
 vector<int> dfs(const vector<int>& vertices, const vector<vector<int>>& edges, int root)
@@ -31,7 +22,9 @@ vector<int> dfs(const vector<int>& vertices, const vector<vector<int>>& edges, i
     vector<bool> marked(vertices.size(), false);
     vector<int> result;
     int current;
-    int neighbor;
+    bool adj_flag;
+    vector<vector<int>> adjacents=get_adj(vertices, edges);
+    
 
     marked[static_cast<size_t>(root)]=true;
     s.push(root);
@@ -39,19 +32,23 @@ vector<int> dfs(const vector<int>& vertices, const vector<vector<int>>& edges, i
 
     while (!s.empty())
     {
+        adj_flag=false;
         current=s.top();
-        neighbor=neighborhood(current, edges, marked);
-        if (neighbor!=-1)
+        for (int i: adjacents[static_cast<size_t>(current)])
         {
-            marked[static_cast<size_t>(neighbor)]=true;
-            s.push(neighbor);
-            result.push_back(neighbor);
+            if (!marked[static_cast<size_t>(i)])
+            {
+                marked[static_cast<size_t>(i)]=true;
+                s.push(i);
+                result.push_back(i);
+                adj_flag=true;
+                break;
+            }
         }
-        else
+        if (!adj_flag)
         {
             s.pop();
         }
-
     } 
     return result;
 }

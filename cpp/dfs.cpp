@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<stack>
+#include<sstream>
 
 using namespace std;
 
@@ -51,4 +52,35 @@ vector<int> dfs(const vector<int>& vertices, const vector<pair<int, int>>& edges
         }
     } 
     return result;
+}
+
+int main(int argc, char* argv[])
+{
+    if (argc<4)
+    {
+        cerr<<"Missing parameters\n";
+        return 1;
+    }
+
+    string v=argv[1], e=argv[2], r=argv[3];
+    vector<int> vertices;
+    vector<pair<int, int>> edges;
+    int root= stoi(r);
+
+    istringstream s1(v);
+    istringstream s2(e);
+
+    int n,m;
+
+    while (s1>>n)
+        vertices.push_back(n);
+    
+    while (s2>>n>>m)
+        edges.push_back({n, m});
+
+    vector<int> result = dfs(vertices, edges, root);
+    for (auto i:result)
+        cout<<i<<" ";
+
+    return 0;
 }

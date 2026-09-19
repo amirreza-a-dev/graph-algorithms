@@ -2,6 +2,7 @@
 #include<vector>
 #include<queue>
 #include<algorithm>
+#include<sstream>
 
 using namespace std;
 
@@ -61,4 +62,36 @@ vector<int> bfs(const vector<int>& vertices, const vector<pair<int, int>>& edges
         q.pop();
     }
     return no_path_message;
+}
+
+int main(int argc, char* argv[])
+{
+    if (argc<5)
+    {
+        cerr<<"Missing parameters\n";
+        return 1;
+    }
+
+    string v= argv[1], e= argv[2], s= argv[3], t= argv[4];
+    vector<int> vertices;
+    vector<pair<int, int>> edges;
+    int start = stoi(s);
+    int target = stoi(t);
+
+    istringstream s1(v);
+    istringstream s2(e);
+
+    int n, m;
+
+    while (s1>>n)
+        vertices.push_back(n);
+
+    while (s2>>n>>m)
+        edges.push_back({n, m});
+
+    vector<int> result=bfs(vertices, edges, start, target);
+    for (auto i: result)
+        cout<<i<<" ";
+    
+    return 0;
 }

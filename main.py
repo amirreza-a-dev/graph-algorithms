@@ -1,6 +1,5 @@
+import subprocess
 import ui, info
-from bfs import bfs
-from dfs import dfs
 
 def main():
     if not info.GRAPH.exists():
@@ -19,21 +18,28 @@ def main():
             if algorithm=='1':
             
                 start, target = ui.get_vertices_bfs()
-                result = bfs(vertices, edges, start, target)
-                if isinstance(result, list):
-                    print(ui.display(result))
-                else:
-                    print(result)
+                result = subprocess.run(
+                    ["./bfs", " ".join(vertices), " ".join(edges), "".join(start), "".join(target)],
+                    capture_output=True,
+                    text=True
+                )
+                result= result.stdout.split()
+                print(ui.display(result))
                 decision = ui.decide()
                 if decision=='q':
                     break
                 else:
                     continue
             else:
-            
-                root = ui.get_root_dfs()
-                result = dfs(vertices, edges, root)
-                print(result)
+
+                root= ui.get_root_dfs()
+                result = subprocess.run(
+                    ["./dfs", " ".join(vertices), " ".join(edges), "".join(root)],
+                    capture_output=True,
+                    text=True
+                )
+                result= result.stdout.split()
+                print(ui.display(result))
                 decision = ui.decide()
                 if decision=='q':
                     break

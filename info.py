@@ -7,10 +7,9 @@ def information():
     edges=[]
     with open(GRAPH, "r") as f:
         for i in f:
-            edges.append([])
             for j in i.split():
-                edges[-1].append(int(j))
-                vertices.add(int(j))
+                edges.append(j)
+                vertices.add(j)
     return vertices, edges
 
 def initialize():

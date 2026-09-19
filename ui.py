@@ -8,9 +8,10 @@ def pause():
     clear()
 
 def display(result):
-    result.reverse()
+    if result==["-1"]:
+        return "No path was found."
     path=""
-    path+=str(result[0])
+    path+=result[0]
     for i in range(1, len(result)):
         path+=f" --- {result[i]}"
     clear()
@@ -32,8 +33,8 @@ Do you want to define the graph from scratch? [y/n]
 def get_vertices_bfs():
     while True:
         try:
-            start = int(input("From: "))
-            target = int(input("To: "))
+            start = input("From: ")
+            target = input("To: ")
             clear()
             return start, target
         except ValueError:
@@ -74,7 +75,7 @@ Choose one of these algorithms:
 def get_root_dfs():
     while True:
         try:
-            root = int(input("Specify the root vertex: "))
+            root = input("Specify the root vertex: ")
             clear()
             return root
         except ValueError:

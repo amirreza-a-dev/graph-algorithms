@@ -12,13 +12,21 @@ This is a simple implementation of graph traversal algorithms. It helps users fi
 * [x] Depth First Search
 * [x] Support for undirected and unweighted graphs
 
-## Technologies
+## Built With
 
 * Python
+* C++
 
 ## Requirements
 
 * Python 3.10 or newer
+* C++ compiler (g++)
+
+## Usage
+
+```bash
+python main.py
+```
 
 ## Status
 
@@ -27,3 +35,5 @@ This is a simple implementation of graph traversal algorithms. It helps users fi
 ## Learning Goals
 
 * Improve my knowledge of graph algorithms.
+* Learn the basics of C++.
+* Improve my Python skills.

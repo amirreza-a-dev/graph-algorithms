@@ -1,6 +1,8 @@
 from pathlib import Path
 
 GRAPH=Path(__file__).parent/"graph.txt"
+BFS=Path(__file__).parent/"bfs"
+DFS=Path(__file__).parent/"dfs"
 
 def information():
     vertices=set()

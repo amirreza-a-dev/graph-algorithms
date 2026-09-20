@@ -26,13 +26,16 @@ def main():
             if algorithm=='1':
             
                 start, target = ui.get_vertices_bfs()
-                result = subprocess.run(
-                    ["./bfs", " ".join(vertices), " ".join(edges), start, target],
-                    capture_output=True,
-                    text=True
-                )
-                result= result.stdout.split()
-                print(ui.display(result))
+                try:
+                    result = subprocess.run(
+                        ["./bfs", " ".join(vertices), " ".join(edges), start, target],
+                        capture_output=True,
+                        text=True
+                    )
+                    result= result.stdout.split()
+                    print(ui.display(result))
+                except IndexError:
+                    print("The root vertex does not exist.")
                 decision = ui.decide()
                 if decision=='q':
                     break
@@ -41,13 +44,16 @@ def main():
             else:
 
                 root= ui.get_root_dfs()
-                result = subprocess.run(
-                    ["./dfs", " ".join(vertices), " ".join(edges), root],
-                    capture_output=True,
-                    text=True
-                )
-                result= result.stdout.split()
-                print(ui.display(result))
+                try:
+                    result = subprocess.run(
+                        ["./dfs", " ".join(vertices), " ".join(edges), root],
+                        capture_output=True,
+                        text=True
+                    )
+                    result= result.stdout.split()
+                    print(ui.display(result))
+                except IndexError:
+                    print("Vertex does not exist.")
                 decision = ui.decide()
                 if decision=='q':
                     break

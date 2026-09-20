@@ -1,8 +1,11 @@
 from pathlib import Path
+import os
 
 GRAPH=Path(__file__).parent/"graph.txt"
-BFS=Path(__file__).parent/"bfs"
-DFS=Path(__file__).parent/"dfs"
+BFS=Path(__file__).parent/"bfs.exe" if os.name=="nt" else Path(__file__).parent/"bfs"
+DFS=Path(__file__).parent/"dfs.exe" if os.name=="nt" else Path(__file__).parent/"dfs"
+EXE_BFS="bfs.exe" if os.name=="nt" else "./bfs"
+EXE_DFS="dfs.exe" if os.name=="nt" else "./dfs"
 
 def information():
     vertices=set()

@@ -15,11 +15,11 @@ def main():
     vertices, edges = info.information()
     if not info.BFS.exists():
         subprocess.run(
-            ["g++", "bfs.cpp", "-o", "bfs"]
+            ["g++", "bfs.cpp", "-o", info.BFS]
         )
     if not info.DFS.exists():
         subprocess.run(
-            ["g++", "dfs.cpp", "-o", "dfs"]
+            ["g++", "dfs.cpp", "-o", info.DFS]
         )
     while True:
             algorithm = ui.get_algorithms()
@@ -28,7 +28,7 @@ def main():
                 start, target = ui.get_vertices_bfs()
                 try:
                     result = subprocess.run(
-                        ["./bfs", " ".join(vertices), " ".join(edges), start, target],
+                        [info.EXE_BFS, " ".join(vertices), " ".join(edges), start, target],
                         capture_output=True,
                         text=True
                     )
@@ -46,7 +46,7 @@ def main():
                 root= ui.get_root_dfs()
                 try:
                     result = subprocess.run(
-                        ["./dfs", " ".join(vertices), " ".join(edges), root],
+                        [info.EXE_DFS, " ".join(vertices), " ".join(edges), root],
                         capture_output=True,
                         text=True
                     )

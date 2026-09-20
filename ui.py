@@ -58,15 +58,17 @@ def wrong_input():
     print("Wrong input.\nTry again.")
     pause()
 
-def get_algorithms():
+def get_algorithms_menu():
     while True:
         print("""
-Choose one of these algorithms:
-1. BFS
-2. DFS
+----< Main Menu >----
+1. BFS Algorithm
+2. DFS Algorithm
+3. Exit Program
+---------------------
             """)
         choice=input(">> ")
-        if choice in ('1', '2'):
+        if choice in ('1', '2', '3'):
             clear()
             return choice
         else:

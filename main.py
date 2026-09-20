@@ -22,8 +22,8 @@ def main():
             ["g++", "dfs.cpp", "-o", info.DFS]
         )
     while True:
-            algorithm = ui.get_algorithms()
-            if algorithm=='1':
+            menu_choice = ui.get_algorithms_menu()
+            if menu_choice=='1':
             
                 start, target = ui.get_vertices_bfs()
                 try:
@@ -41,7 +41,7 @@ def main():
                     break
                 else:
                     continue
-            else:
+            elif menu_choice=='2':
 
                 root= ui.get_root_dfs()
                 try:
@@ -59,6 +59,9 @@ def main():
                     break
                 else:
                     continue
+
+            else:
+                break
 
 if __name__=="__main__":
     main()

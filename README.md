@@ -64,7 +64,11 @@ because vertices 2, 3, 4, 5, and 6 are missing.
 
 ## Status
 
-🚧 **Work in Progress**
+✅ Completed — v1.0.0
+
+The initial version of the project is complete.
+
+Future improvements and features may be added later.
 
 ## Learning Goals
 

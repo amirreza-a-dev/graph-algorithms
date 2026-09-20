@@ -31,7 +31,9 @@ python main.py
 
 Each edge should be entered as a pair of vertex numbers in the following format:
 
+```bash
 0 1
+```
 
 where 0 and 1 represent the two vertices of the edge.
 
@@ -39,6 +41,7 @@ Vertices are represented by non-negative integers starting from 0. The set of ve
 
 For example, the following input is valid:
 
+```bash
 0 1
 1 7 
 2 3 
@@ -46,13 +49,16 @@ For example, the following input is valid:
 4 5 
 5 6 
 6 2
+```
 
 The order of the edges does not matter. Although vertex 7 appears before some of the other vertices, all vertices from 0 through 7 are present in the input.
 
 The following input is invalid:
 
+```bash
 0 1
 1 7
+```
 
 because vertices 2, 3, 4, 5, and 6 are missing.
 

@@ -5,19 +5,20 @@
 
 using namespace std;
 
-vector<vector<int>> get_adj(const vector<int>& vertices, const vector<pair<int, int>>& edges)
+vector<vector<int>> get_adj(const vector<int>& vertices, const vector<vector<int>>& edges)
 {
     int vertices_size=static_cast<int>(vertices.size());
     vector<vector<int>> adjacents(static_cast<size_t>(vertices_size));
-    for (const pair<int, int>& i: edges)
+    for (const auto& i: edges)
     {
-        adjacents[static_cast<size_t>(i.first)].push_back(i.second);
-        adjacents[static_cast<size_t>(i.second)].push_back(i.first);
+        adjacents[static_cast<size_t>(i[0])].push_back(i[1]);
+        if (i[2]==1)
+            adjacents[static_cast<size_t>(i[1])].push_back(i[0]);
     }
     return adjacents;
 }
 
-vector<int> dfs(const vector<int>& vertices, const vector<pair<int, int>>& edges, int root)
+vector<int> dfs(const vector<int>& vertices, const vector<vector<int>>& edges, int root)
 {
     stack<int> s;
     vector<bool> marked(vertices.size(), false);
@@ -26,7 +27,6 @@ vector<int> dfs(const vector<int>& vertices, const vector<pair<int, int>>& edges
     bool adj_flag;
     vector<vector<int>> adjacents=get_adj(vertices, edges);
     
-
     marked[static_cast<size_t>(root)]=true;
     s.push(root);
     result.push_back(root);
@@ -64,19 +64,19 @@ int main(int argc, char* argv[])
 
     string v=argv[1], e=argv[2], r=argv[3];
     vector<int> vertices;
-    vector<pair<int, int>> edges;
+    vector<vector<int>> edges;
     int root= stoi(r);
 
     istringstream s1(v);
     istringstream s2(e);
 
-    int n,m;
+    int n,m,k;
 
     while (s1>>n)
         vertices.push_back(n);
     
-    while (s2>>n>>m)
-        edges.push_back({n, m});
+    while (s2>>n>>m>>k)
+        edges.push_back({n, m, k});
 
     vector<int> result = dfs(vertices, edges, root);
     for (auto i:result)

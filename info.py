@@ -35,3 +35,16 @@ def initialize():
             if edge=="end":
                 break
             f.write(edge+'\n')
+
+def check_graph_validity():
+    with open(GRAPH, "r") as f:
+        for i in f:
+            if len(i.split())!=3:
+                return -1
+            try:
+                int(i.split()[0])
+                int(i.split()[1])
+            except ValueError:
+                return -1
+            if i.split()[2] not in ("d", "u"):
+                return -1

@@ -56,7 +56,7 @@ def decide():
         """)
         decision=input(">> ")
         clear()
-        if decision=="" or decision.lower()=="q":
+        if decision.lower() in ("", "q"):
             clear()
             return decision.lower()
         else:
@@ -90,3 +90,8 @@ def get_root_dfs():
             return root
         except ValueError:
             wrong_input()
+
+def broken_graph():
+    print("The graph file contains invalid data.\n")
+    dec=decide()
+    return dec

@@ -7,13 +7,21 @@ def pause():
     input("Press Enter to continue...")
     clear()
 
-def display(result):
+def display_bfs(result):
     if result==["-1"]:
         return "No path was found."
     path=""
     path+=result[0]
     for i in range(1, len(result)):
         path+=f" --- {result[i]}"
+    clear()
+    return path
+
+def display_dfs(result):
+    path=""
+    path+=result[0]
+    for i in range(1, len(result)):
+        path+=f", {result[i]}"
     clear()
     return path
 
@@ -61,11 +69,11 @@ def wrong_input():
 def get_algorithms_menu():
     while True:
         print("""
-----< Main Menu >----
+--< Main Menu >--
 1. BFS Algorithm
 2. DFS Algorithm
 3. Exit Program
----------------------
+-----------------
             """)
         choice=input(">> ")
         if choice in ('1', '2', '3'):

@@ -10,18 +10,26 @@ EXE_DFS="dfs.exe" if os.name=="nt" else "./dfs"
 def information():
     vertices=set()
     edges=[]
-    with open(GRAPH, "r") as f:
+    with open(GRAPH, "r") as f: 
         for i in f:
+            counter=0
             for j in i.split():
-                edges.append(j)
-                vertices.add(j)
+                if (counter<2):
+                    edges.append(j)
+                    vertices.add(j)
+                else:
+                    if j.lower()=="d":
+                        edges.append("0")
+                    elif j.lower()=="u":
+                        edges.append("1")
+                counter+=1
     return vertices, edges
 
 def initialize():
     with open(GRAPH, "w") as f:
         print("Enter 'end' to stop.")
         while True:
-            edge = input("Enter the edge (e.g. 0 1): ")
+            edge = input("Enter the edge (e.g. 0 1 d for directed, 0 1 u for undirected): ")
             if edge=="":
                 continue
             if edge=="end":

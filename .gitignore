@@ -4,3 +4,4 @@ graph.txt
 bfs
 dfs
 .vscode/
+build/

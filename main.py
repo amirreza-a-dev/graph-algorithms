@@ -33,7 +33,7 @@ def main():
                         text=True
                     )
                     result= result.stdout.split()
-                    print(ui.display(result))
+                    print(ui.display_bfs(result))
                 except IndexError:
                     print("The root vertex does not exist.")
                 decision = ui.decide()
@@ -51,7 +51,7 @@ def main():
                         text=True
                     )
                     result= result.stdout.split()
-                    print(ui.display(result))
+                    print(ui.display_dfs(result))
                 except IndexError:
                     print("Vertex does not exist.")
                 decision = ui.decide()

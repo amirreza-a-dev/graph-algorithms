@@ -6,20 +6,21 @@
 
 using namespace std;
 
-vector<vector<int>> get_adj(const vector<int>& vertices, const vector<pair<int, int>>& edges)
+vector<vector<int>> get_adj(const vector<int>& vertices, const vector<vector<int>>& edges)
 {
     int vertices_size=static_cast<int>(vertices.size());
     vector<vector<int>> adjacents(static_cast<size_t>(vertices_size));
-    for (const pair<int, int>& i: edges)
+    for (const auto& i: edges)
     {
-        adjacents[static_cast<size_t>(i.first)].push_back(i.second);
-        adjacents[static_cast<size_t>(i.second)].push_back(i.first);
+        adjacents[static_cast<size_t>(i[0])].push_back(i[1]);
+        if (i[2]==1)
+            adjacents[static_cast<size_t>(i[1])].push_back(i[0]);
     }
     return adjacents;
 }
 
 
-vector<int> bfs(const vector<int>& vertices, const vector<pair<int, int>>& edges, int start, int target)
+vector<int> bfs(const vector<int>& vertices, const vector<vector<int>>& edges, int start, int target)
 {
     if (start==target)
     {
@@ -74,20 +75,20 @@ int main(int argc, char* argv[])
 
     string v= argv[1], e= argv[2], s= argv[3], t= argv[4];
     vector<int> vertices;
-    vector<pair<int, int>> edges;
+    vector<vector<int>> edges;
     int start = stoi(s);
     int target = stoi(t);
 
     istringstream s1(v);
     istringstream s2(e);
 
-    int n, m;
+    int n, m, k;
 
     while (s1>>n)
         vertices.push_back(n);
 
-    while (s2>>n>>m)
-        edges.push_back({n, m});
+    while (s2>>n>>m>>k)
+        edges.push_back({n, m, k});
 
     vector<int> result=bfs(vertices, edges, start, target);
     for (auto i: result)

@@ -16,15 +16,17 @@ def main():
         check = info.check_graph_validity()
         if check==-1:
             decision=ui.broken_graph()
-            if decision=="":
-                choice= ui.ask_graph_reset()
-                if choice=="y":
-                    ui.clear()
-                    info.initialize()
-                    ui.clear()
-            else: exit(0)
+        elif check==-2:
+            decision=ui.empty_graph()
         else: break
-        
+        if decision=="":
+            choice= ui.ask_graph_reset()
+            if choice=="y":
+                ui.clear()
+                info.initialize()
+                ui.clear()
+        else: exit(0)
+
     vertices, edges = info.information()
     if not info.BFS.exists():
         subprocess.run(

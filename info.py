@@ -38,6 +38,9 @@ def initialize():
 
 def check_graph_validity():
     with open(GRAPH, "r") as f:
+        if not f.read(1):
+            return -2
+        f.seek(0)
         for i in f:
             if len(i.split())!=3:
                 return -1

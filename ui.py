@@ -95,3 +95,8 @@ def broken_graph():
     print("The graph file contains invalid data.\n")
     dec=decide()
     return dec
+
+def empty_graph():
+    print("The graph file is empty.\n")
+    dec = decide()
+    return dec

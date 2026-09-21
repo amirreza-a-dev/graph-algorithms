@@ -10,7 +10,7 @@ This is a simple implementation of graph traversal algorithms. It helps users fi
 
 * [x] Breadth First Search
 * [x] Depth First Search
-* [x] Support for undirected and unweighted graphs
+* [x] Support for directed, undirected and mixed unweighted graphs
 
 ## Built With
 
@@ -29,26 +29,45 @@ python main.py
 ```
 ## Input Format
 
-Each edge should be entered as a pair of vertex numbers in the following format:
+The graph is read from a text file where each line represents an edge using three values:
+
+<source> <destination> <type>
+* source — the starting vertex.
+* destination — the ending vertex.
+* type — specifies whether the edge is directed or undirected:
+    * d — directed edge
+    * u — undirected edge
+
+For example, the following input is valid:
 
 ```bash
-0 1
+0 1 u
+2 1 d
+end
 ```
+And for example the following lines invalidate the input.:
 
-where 0 and 1 represent the two vertices of the edge.
+```bash
+1 0 2
+0 1 x
+1 u 0
+d 1 0
+1 2
+```
 
 Vertices are represented by non-negative integers starting from 0. The set of vertices must be consecutive, meaning that if the input contains a vertex n, then all vertices from 0 through n-1 must also be present somewhere in the input.
 
 For example, the following input is valid:
 
 ```bash
-0 1
-1 7 
-2 3 
-3 4 
-4 5 
-5 6 
-6 2
+0 1 d
+1 7 d
+2 3 u
+3 4 d
+4 5 u
+5 6 u
+6 2 u
+end
 ```
 
 The order of the edges does not matter. Although vertex 7 appears before some of the other vertices, all vertices from 0 through 7 are present in the input.
@@ -56,19 +75,21 @@ The order of the edges does not matter. Although vertex 7 appears before some of
 The following input is invalid:
 
 ```bash
-0 1
-1 7
+0 1 u
+1 7 e
+end
 ```
 
 because vertices 2, 3, 4, 5, and 6 are missing.
 
 ## Status
 
-✅ Completed — v1.0.0
+🚧 The project is currently under active development.
 
-The initial version of the project is complete.
-
-Future improvements and features may be added later.
+Version 1.1.0
+* Added support for directed and undirected edges.
+* Added validation and error handling for invalid graph file data.
+* Improved the user interface and input prompts.
 
 ## Learning Goals
 

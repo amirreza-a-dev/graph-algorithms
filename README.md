@@ -1,3 +1,7 @@
+![License](https://img.shields.io/badge/license-MIT-red)
+![Python](https://img.shields.io/badge/python-3.14-blue)
+![C++](https://img.shields.io/badge/C%2B%2B-yellow)
+
 # Graph Algorithms
 
 A simple terminal-based app for implementing and using graph algorithms.

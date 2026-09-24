@@ -88,7 +88,7 @@ because vertices 2, 3, 4, 5, and 6 are missing.
 
 ## Status
 
-🚧 The project is currently under active development.
+🚧 The project is currently under development.
 
 Version 1.1.0
 * Added support for directed and undirected edges.
